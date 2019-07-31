@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Take Off Your...</title>
+
+    <style>
+      body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100%;
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+      }
+      .small-container {
+        height: 250px;
+      }
+      button {
+        color: white;
+        width: 300px;
+        height: 150px;
+        font-size: 3em;
+        outline: none;
+        box-shadow: inset 0px -5px 20px 0px black;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: mediumseagreen;
+        margin: 140px 0px;
+        padding: 0;
+      }
+      .small-container p {
+        margin: 0;
+        font-size: 5em;
+        color: indianred;
+      }
+      .small-container img {
+        margin: 50px;
+        height: auto;
+        max-width: 150px;
+      }
+
+      @media screen and (max-width: 500px) {
+        .small-container p {
+          font-size: 4em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="small-container">
+        <p id="text">Take off your ...</p>
+        <img id="img" />
+      </div>
+      <button id="btn">
+        <img src="img/monk.png" />
+      </button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        var options = [
+          "T-Shirt",
+          "Singlet",
+          "Underwear",
+          "Socks",
+          "Shorts",
+          "Bra"
+        ];
+        var btn = document.getElementById("btn");
+        var text = document.getElementById("text");
+        var img = document.getElementById("img");
+        btn.addEventListener("click", function() {
+          var count = localStorage.getItem("count");
+          localStorage.setItem("count", count - 1);
+          if (count == 0) {
+            text.innerHTML = "End of game :)";
+            btn.innerHTML = "Start again";
+            img.removeAttribute("src");
+            btn.addEventListener("click", function() {
+              document.location.href = "index.html";
+            });
+          } else {
+            var randomChoice = options.splice(
+              Math.floor(Math.random() * options.length),
+              1
+            );
+            btn.innerHTML = "Shuffle";
+            text.innerHTML = randomChoice;
+            img.setAttribute("src", `img/${randomChoice}.png`);
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

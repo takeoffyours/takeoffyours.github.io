@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Take Off Your...</title>
+
+    <style>
+      body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100%;
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+      }
+      .small-container {
+        height: 250px;
+      }
+      button {
+        color: white;
+        width: 300px;
+        height: 150px;
+        font-size: 3em;
+        outline: none;
+        box-shadow: inset 0px -5px 20px 0px black;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: mediumseagreen;
+        margin: 140px 0px;
+        padding: 0;
+      }
+      .small-container p {
+        margin: 0;
+        font-size: 5em;
+        color: indianred;
+      }
+      input {
+        width: 65px;
+        height: 50px;
+        font-size: 20px;
+        border: 1px solid lightgray;
+      }
+
+      @media screen and (max-width: 990px){
+        .small-container p {
+          font-size: 4em;
+        }
+        input{
+            border: 1px solid lightgray;
+        }
+      }
+
+      @media screen and (max-width: 500px){
+        .small-container p {
+          font-size: 3em;
+        }
+        input{
+            border: 1px solid lightgray;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="small-container">
+        <p id="text">How many clothes will you take off ? <br />🙊</p>
+        <input type="number" placeholder="1 to 6" id="count" />
+      </div>
+      <button id="btn">Start</button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        var btn = document.getElementById("btn");
+        var count = document.getElementById("count");
+        btn.addEventListener("click", function() {
+          document.location.href = "random.html";
+          localStorage.setItem("count", count.value);
+        });
+      };
+    </script>
+  </body>
+</html>
